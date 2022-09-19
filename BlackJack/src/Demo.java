@@ -1,7 +1,41 @@
+import java.awt.*;
 import java.util.*;
 import java.math.*;
+import javax.swing.*;
 class Demo {
     public static void main(String[] args) {
+        JFrame window = new JFrame();
+        JPanel panel = new JPanel(null);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setResizable(false);
+        window.setTitle("BlackJack");
+        JLabel title = new JLabel();
+        title.setText("Current sum: ");
+        title.setLocation(20,20);
+        title.setSize(140,14);
+
+        JLabel cardsLabel = new JLabel();
+        cardsLabel.setLocation(20,50);
+        cardsLabel.setSize(6000,14);
+        cardsLabel.setText("Current Cards: ");
+
+        JButton hitButton = new JButton("Hit");
+        hitButton.setLocation(20,100);
+        hitButton.setSize(100,20);
+
+
+
+
+        window.setSize(1080,720);
+        panel.add(hitButton);
+        panel.add(title);
+        panel.add(cardsLabel);
+        window.add(panel);
+        window.setVisible(true);
+
+
+
+
         ArrayList<Card> deckID = new ArrayList<Card>(1);
         Random random = new Random();
         Scanner scan = new Scanner(System.in);
@@ -50,6 +84,7 @@ class Demo {
                 int holder = 0;
                 holder = random.nextInt(0,deckLength);
                 System.out.println(deckID.get(holder));
+                cardsLabel.setText(cardsLabel.getText() + deckID.get(holder).toString() +", ");
                 player.setSum(player.getSum()+deckID.get(holder).getValue());
                 deckID.remove(holder);
                 deckLength = deckLength - 1;
@@ -61,7 +96,7 @@ class Demo {
                 deckID.remove(holder);
                 deckLength = deckLength - 1;
             }
-            System.out.println("Current Hand: " + player.getSum());
+            title.setText("Current Hand: " + player.getSum());
             System.out.print("Please type H to hit, or S to stand: ");
             String response;
             response = scan.next();
