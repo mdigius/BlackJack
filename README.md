@@ -1,5 +1,6 @@
 # BlackJack
 Simple implementation of BlackJack using JavaFX. Player is able to place a bet before dealing the hand.
+This was made before I learned proper software construction concepts, but still think it is a fun project to show my progress.
 
 Screenshots:
 
